@@ -5,7 +5,9 @@ resource "random_string" "prefix" {
   upper   = false
   numeric = false
 }
-
+locals {
+  resource_groups = testing-rg
+}
 locals {
   azuread = {
     azuread_api_permissions             = try(var.azuread.azuread_api_permissions, {})

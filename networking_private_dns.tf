@@ -12,7 +12,7 @@ module "private_dns" {
   records             = try(each.value.records, {})
   vnet_links          = try(each.value.vnet_links, {})
   tags                = try(each.value.tags, null)
-  vnets               = local.combined_objects_networking
+  # vnets               = local.combined_objects_networking
 }
 
 output "private_dns" {
@@ -31,7 +31,7 @@ module "private_dns_vnet_links" {
   base_tags          = {}
   global_settings    = local.global_settings
   client_config      = local.client_config
-  virtual_network_id = local.combined_objects_networking[try(each.value.lz_key, local.client_config.landingzone_key)][each.value.vnet_key].id
+  # virtual_network_id = local.combined_objects_networking[try(each.value.lz_key, local.client_config.landingzone_key)][each.value.vnet_key].id
   private_dns        = local.combined_objects_private_dns
   settings           = each.value
 }
