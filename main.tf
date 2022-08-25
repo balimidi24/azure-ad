@@ -70,21 +70,21 @@ module "keyvault_access_policies" {
   }
 }
 
-module "caf" {
-  source  = "aztfmod/caf/azurerm"
-  version = "~>5.5.0"
+# module "caf" {
+#   source  = "aztfmod/caf/azurerm"
+#   version = "~>5.5.0"
 
-  global_settings = var.global_settings
-  resource_groups = var.resource_groups
-  keyvaults       = var.keyvaults
+#   global_settings = var.global_settings
+#   resource_groups = var.resource_groups
+#   keyvaults       = var.keyvaults
 
-  compute = {
-    virtual_machines = var.virtual_machines
-  }
+#   compute = {
+#     virtual_machines = var.virtual_machines
+#   }
 
-  networking = {
-    public_ip_addresses = var.public_ip_addresses
-    vnets               = var.vnets
-  }
-  # insert the 7 required variables here
-}
+#   networking = {
+#     public_ip_addresses = var.public_ip_addresses
+#     vnets               = var.vnets
+#   }
+#   # insert the 7 required variables here
+# }
