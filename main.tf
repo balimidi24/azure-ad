@@ -52,7 +52,7 @@ data "azuread_service_principal" "logged_in_app" {
 
 
 module "keyvault_access_policies" {
-  source   = "./modules/security/keyvault_access_policies"
+  source   = "./modules/keyvault_access_policies"
   for_each = var.keyvault_access_policies
 
   keyvault_key    = each.key
