@@ -11,6 +11,44 @@ variable "global_settings" {
   }
 }
 
+variable "cloud" {
+  description = "Configuration object - Cloud resources defaults to Azure public, allows you to switch to other Azure endpoints."
+  default = {
+    acrLoginServerEndpoint                      = ".azurecr.io"
+    attestationEndpoint                         = ".attest.azure.net"
+    azureDatalakeAnalyticsCatalogAndJobEndpoint = "azuredatalakeanalytics.net"
+    azureDatalakeStoreFileSystemEndpoint        = "azuredatalakestore.net"
+    keyvaultDns                                 = ".vault.azure.net"
+    mariadbServerEndpoint                       = ".mariadb.database.azure.com"
+    mhsmDns                                     = ".managedhsm.azure.net"
+    mysqlServerEndpoint                         = ".mysql.database.azure.com"
+    postgresqlServerEndpoint                    = ".postgres.database.azure.com"
+    sqlServerHostname                           = ".database.windows.net"
+    storageEndpoint                             = "core.windows.net"
+    storageSyncEndpoint                         = "afs.azure.net"
+    synapseAnalyticsEndpoint                    = ".dev.azuresynapse.net"
+    activeDirectory                             = "https://login.microsoftonline.com"
+    activeDirectoryDataLakeResourceId           = "https://datalake.azure.net/"
+    activeDirectoryGraphResourceId              = "https://graph.windows.net/"
+    activeDirectoryResourceId                   = "https://management.core.windows.net/"
+    appInsightsResourceId                       = "https://api.applicationinsights.io"
+    appInsightsTelemetryChannelResourceId       = "https://dc.applicationinsights.azure.com/v2/track"
+    attestationResourceId                       = "https://attest.azure.net"
+    azmirrorStorageAccountResourceId            = "null"
+    batchResourceId                             = "https://batch.core.windows.net/"
+    gallery                                     = "https://gallery.azure.com/"
+    logAnalyticsResourceId                      = "https://api.loganalytics.io"
+    management                                  = "https://management.core.windows.net/"
+    mediaResourceId                             = "https://rest.media.azure.net"
+    microsoftGraphResourceId                    = "https://graph.microsoft.com/"
+    ossrdbmsResourceId                          = "https://ossrdbms-aad.database.windows.net"
+    portal                                      = "https://portal.azure.com"
+    resourceManager                             = "https://management.azure.com/"
+    sqlManagement                               = "https://management.core.windows.net:8443/"
+    synapseAnalyticsResourceId                  = "https://dev.azuresynapse.net"
+    vmImageAliasDoc                             = "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json"
+  }
+}
 variable "client_config" {
   default = {}
 }
