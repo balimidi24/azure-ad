@@ -48,3 +48,24 @@ data "azuread_service_principal" "logged_in_app" {
   count          = var.logged_aad_app_objectId == null ? 0 : 1
   application_id = data.azurerm_client_config.current.client_id
 }
+
+
+
+module "keyvault_access_policies" {
+  source   = "./modules/security/keyvault_access_policies"
+  for_each = var.keyvault_access_policies
+
+  keyvault_key    = each.key
+  keyvaults       = local.combined_objects_keyvaults
+  access_policies = each.value
+  azuread_groups  = local.combined_objects_azuread_groups
+  client_config   = local.client_config
+  resources = {
+    azuread_service_principals        = local.combined_objects_azuread_service_principals
+    diagnostic_storage_accounts       = local.combined_objects_diagnostic_storage_accounts
+    managed_identities                = local.combined_objects_managed_identities
+    mssql_managed_instances           = local.combined_objects_mssql_managed_instances
+    mssql_managed_instances_secondary = local.combined_objects_mssql_managed_instances_secondary
+    storage_accounts                  = local.combined_objects_storage_accounts
+  }
+}
