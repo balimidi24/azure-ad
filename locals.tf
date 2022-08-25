@@ -20,4 +20,15 @@ locals {
     azuread_service_principals          = try(var.azuread.azuread_service_principals, {})
     azuread_users                       = try(var.azuread.azuread_users, {})
   }
+  
+  client_config = var.client_config == {} ? {
+    client_id               = data.azurerm_client_config.current.client_id
+    landingzone_key         = var.current_landingzone_key
+    logged_aad_app_objectId = local.object_id
+    logged_user_objectId    = local.object_id
+    object_id               = local.object_id
+    subscription_id         = data.azurerm_client_config.current.subscription_id
+    tenant_id               = data.azurerm_client_config.current.tenant_id
+  } : map(var.client_config)
+
 }
