@@ -16,6 +16,10 @@ terraform {
       source  = "azure/azapi"
       version = "~> 0.2.0"
     }
+    azurecaf = {
+      source  = "aztfmod/azurecaf"
+      version = "~> 1.2.0"
+    }
     null = {
       source = "hashicorp/null"
     }
@@ -64,4 +68,10 @@ module "keyvault_access_policies" {
     mssql_managed_instances_secondary = local.combined_objects_mssql_managed_instances_secondary
     storage_accounts                  = local.combined_objects_storage_accounts
   }
+}
+
+module "caf" {
+  source  = "aztfmod/caf/azurerm"
+  version = "~>5.5.0"
+  # insert the 7 required variables here
 }
