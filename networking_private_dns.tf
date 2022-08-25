@@ -8,7 +8,7 @@ module "private_dns" {
   client_config       = local.client_config
   name                = each.value.name
   resource_group_name = local.resource_groups
-  # base_tags           = try(local.global_settings.inherit_tags, false) ? try(local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].tags, {}) : {}
+  base_tags           = try(local.global_settings.inherit_tags, false) ? try(local.resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].tags, {}) : {}
   records             = try(each.value.records, {})
   vnet_links          = try(each.value.vnet_links, {})
   tags                = try(each.value.tags, null)

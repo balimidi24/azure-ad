@@ -9,7 +9,7 @@ module "managed_identities" {
   settings            = each.value
   location            = can(local.global_settings.regions[each.value.region]) ? local.global_settings.regions[each.value.region] : local.resource_groups
   resource_group_name = local.resource_groups
-  # base_tags           = try(local.global_settings.inherit_tags, false) ? try(local.combined_objects_resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].tags, {}) : {}
+  base_tags           = try(local.global_settings.inherit_tags, false) ? try(local.resource_groups[try(each.value.resource_group.lz_key, local.client_config.landingzone_key)][try(each.value.resource_group.key, each.value.resource_group_key)].tags, {}) : {}
 }
 
 output "managed_identities" {
